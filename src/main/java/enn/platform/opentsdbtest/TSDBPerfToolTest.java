@@ -16,19 +16,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-/*
-写：
-10.39.42.5  cdhprod-c-1   4242
-10.39.42.3  cdhprod-c-2   4242
-10.39.42.4  cdhprod-c-3   4242
-负载均衡： 10.39.41.56:4444
-
-
-读：
-10.39.42.6  cdhprod-c-4    4242
-10.39.42.7  cdhprod-c-5    4242
-负载均衡： 10.39.41.55:4444
-*/
 
 public class TSDBPerfToolTest {
   // OpenTSDB IP地址
