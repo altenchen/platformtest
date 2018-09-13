@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="318e8e16-acc1-4eb0-912b-f8753d4c57d5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/TSDBPerfTool.java" afterPath="$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/TSDBPerfTool.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -15,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TSDBPerfTool.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TSDBPerfTool.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/TSDBPerfTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2670">
-              <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+            <state relative-caret-position="155">
+              <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,19 +38,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TSDBPerfToolTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TSDBPerfToolTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/TSDBPerfToolTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="77" column="15" lean-forward="false" selection-start-line="77" selection-start-column="15" selection-end-line="77" selection-end-column="15" />
+            <state relative-caret-position="45">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
-                <element signature="e#1839#1847#0" expanded="true" />
-                <element signature="e#6575#6583#0" expanded="true" />
-                <element signature="e#6665#6673#0" expanded="true" />
-                <element signature="e#6756#6764#0" expanded="true" />
-                <element signature="e#6913#6921#0" expanded="true" />
-                <element signature="e#7838#7849#0" expanded="true" />
-                <element signature="e#7953#7969#0" expanded="true" />
+                <element signature="e#1622#1630#0" expanded="true" />
+                <element signature="e#6358#6366#0" expanded="true" />
+                <element signature="e#6448#6456#0" expanded="true" />
+                <element signature="e#6539#6547#0" expanded="true" />
+                <element signature="e#6696#6704#0" expanded="true" />
+                <element signature="e#7621#7632#0" expanded="true" />
+                <element signature="e#7736#7752#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -206,7 +207,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/run.sh" />
         <option value="$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/PropertiesUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/TSDBPerfTool.java" />
         <option value="$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/TimeComputing.java" />
         <option value="$PROJECT_DIR$/src/main/resources/common.properties" />
         <option value="$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/TimeUtil.java" />
@@ -215,6 +215,7 @@
         <option value="$PROJECT_DIR$/src/main/java/enn/platform/test/TestAll.java" />
         <option value="$PROJECT_DIR$/src/main/java/enn/platform/test/LockTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/TSDBPerfToolTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/TSDBPerfTool.java" />
       </list>
     </option>
   </component>
@@ -597,15 +598,16 @@
       <workItem from="1536563282400" duration="23482000" />
       <workItem from="1536716993830" duration="22062000" />
       <workItem from="1536803522620" duration="3019000" />
-      <workItem from="1536807756072" duration="294000" />
+      <workItem from="1536807756072" duration="673000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48857000" />
+    <option name="totallyTimeSpent" value="49236000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -616,7 +618,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925683" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36313617" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33562586" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33562586" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25444266" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -763,13 +765,13 @@
         <state relative-caret-position="945">
           <caret line="77" column="15" lean-forward="false" selection-start-line="77" selection-start-column="15" selection-end-line="77" selection-end-column="15" />
           <folding>
-            <element signature="e#1839#1847#0" expanded="true" />
-            <element signature="e#6575#6583#0" expanded="true" />
-            <element signature="e#6665#6673#0" expanded="true" />
-            <element signature="e#6756#6764#0" expanded="true" />
-            <element signature="e#6913#6921#0" expanded="true" />
-            <element signature="e#7838#7849#0" expanded="true" />
-            <element signature="e#7953#7969#0" expanded="true" />
+            <element signature="e#1622#1630#0" expanded="true" />
+            <element signature="e#6358#6366#0" expanded="true" />
+            <element signature="e#6448#6456#0" expanded="true" />
+            <element signature="e#6539#6547#0" expanded="true" />
+            <element signature="e#6696#6704#0" expanded="true" />
+            <element signature="e#7621#7632#0" expanded="true" />
+            <element signature="e#7736#7752#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -974,16 +976,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/TSDBPerfTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2670">
-          <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/mavenRepository/org/apache/httpcomponents/httpclient/4.5.2/httpclient-4.5.2.jar!/org/apache/http/impl/conn/PoolingHttpClientConnectionManager.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3885">
@@ -1086,16 +1078,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/TSDBPerfToolTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="77" column="15" lean-forward="false" selection-start-line="77" selection-start-column="15" selection-end-line="77" selection-end-column="15" />
+        <state relative-caret-position="45">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="e#1839#1847#0" expanded="true" />
-            <element signature="e#6575#6583#0" expanded="true" />
-            <element signature="e#6665#6673#0" expanded="true" />
-            <element signature="e#6756#6764#0" expanded="true" />
-            <element signature="e#6913#6921#0" expanded="true" />
-            <element signature="e#7838#7849#0" expanded="true" />
-            <element signature="e#7953#7969#0" expanded="true" />
+            <element signature="e#1622#1630#0" expanded="true" />
+            <element signature="e#6358#6366#0" expanded="true" />
+            <element signature="e#6448#6456#0" expanded="true" />
+            <element signature="e#6539#6547#0" expanded="true" />
+            <element signature="e#6696#6704#0" expanded="true" />
+            <element signature="e#7621#7632#0" expanded="true" />
+            <element signature="e#7736#7752#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/enn/platform/opentsdbtest/TSDBPerfTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
