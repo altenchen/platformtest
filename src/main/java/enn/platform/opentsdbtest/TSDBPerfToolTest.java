@@ -14,6 +14,8 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicLong;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 /*
 写：
 10.39.42.5  cdhprod-c-1   4242
@@ -28,9 +30,7 @@ import java.util.concurrent.atomic.AtomicLong;
 负载均衡： 10.39.41.55:4444
 */
 
-import static java.util.concurrent.TimeUnit.SECONDS;
-
-public class TSDBPerfTool {
+public class TSDBPerfToolTest {
   // OpenTSDB IP地址
   private String address;
   // OpenTSDB 端口
@@ -55,6 +55,10 @@ public class TSDBPerfTool {
   private int MAX_TRY;
   // URL
   private  String writeUrl;
+  // 结束时间
+  private String endDate;
+
+
 
 //  private static AtomicLong LOOP = new AtomicLong(getTimestamp("2000-01-01 00:00:00") / 1000);
   private static AtomicLong LOOP = new AtomicLong(getCurrentTimestamp() / 1000);
@@ -65,7 +69,11 @@ public class TSDBPerfTool {
   private final DataProducer dataProducer = new DataProducer();
   private final ArrayList<Thread> PUT_THREADS = new ArrayList<Thread>();
   private static CloseableHttpClient httpClient;
+
+  private PropertiesUtil prop = new PropertiesUtil("/common.properties");
+
   static {
+
     PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
     cm.setMaxTotal(200);
     cm.setDefaultMaxPerRoute(20);
@@ -132,27 +140,51 @@ public class TSDBPerfTool {
     return ret;
   }
 
+  /**
+   * 初始化配置文件
+   */
   private void initConf() {
-    this.tagNumber = getConf("TAG_NUMBER", 3);
-    this.tps = getConf("TPS", 50000);
-    this.batchNumber = getConf("BATCH_NUMBER", 60);  //每个 PUT 请求中数据点的数量
-    this.threads = getConf("THREADS", 8);
-    this.port = getConf("PORT", 4444);
-    this.address = getConf("ADDRESS", "10.39.41.56");
-    this.MAX_TRY = getConf("MAX_TRY", 4);
-    this.SYNC_TIMEOUT_MS = getConf("SYNC_TIMEOUT_MS", 2 * 60 * 1000);
-    this.sync = getConf("SYNC", false);
-//    this.startDate = getConf("START_DATE", "2000-01-01 00:00:00");
-    this.startDate = getConf("START_DATE", getStringTime());
+    //类内自定义属性名
+//    this.tagNumber = getConf("TAG_NUMBER", 3);
+//    this.tps = getConf("TPS", 50000);
+//    this.batchNumber = getConf("BATCH_NUMBER", 60);  //每个 PUT 请求中数据点的数量
+//    this.threads = getConf("THREADS", 8);
+//    this.port = getConf("PORT", 4444);
+//    this.address = getConf("ADDRESS", "10.39.41.56");
+//    this.MAX_TRY = getConf("MAX_TRY", 4);
+//    this.SYNC_TIMEOUT_MS = getConf("SYNC_TIMEOUT_MS", 2 * 60 * 1000);
+//    this.sync = getConf("SYNC", false);
+////    this.startDate = getConf("START_DATE", "2000-01-01 00:00:00");
+//    this.startDate = getConf("START_DATE", getStringTime());
+//
+//    this.runTime = getConf("RUN_TIME", 60);
+//    LOOP = new AtomicLong(getTimestamp(this.startDate) / 1000);
+//    this.writeUrl =
+//        "http://" + this.address + ":" + this.port + "/api/put/" + (this.sync ? "?sync&" : "?") //是否同步写入 Hbase
+//            + "sync_timeout=" + this.SYNC_TIMEOUT_MS;   //PUT操作的超时时间限制
 
-    this.runTime = getConf("RUN_TIME", 60);
+    //配置文件中自定义属性名
+    this.tagNumber = Integer.valueOf(prop.getProperty("TAG_NUMBER"));
+    this.tps = Integer.valueOf(prop.getProperty("TPS"));
+    this.batchNumber = Integer.valueOf(prop.getProperty("BATCH_NUMBER"));
+    this.threads = Integer.valueOf(prop.getProperty("THREADS"));
+    this.port = Integer.valueOf(prop.getProperty("PORT"));
+    this.address = prop.getProperty("ADDRESS");
+    this.MAX_TRY = Integer.valueOf(prop.getProperty("MAX_TRY"));
+    this.SYNC_TIMEOUT_MS = Integer.valueOf(prop.getProperty("SYNC_TIMEOUT_MS"));
+    this.sync = Boolean.getBoolean(prop.getProperty("SYNC"));
+
+
+    this.startDate = getStringTime();
+
+    this.endDate = getEndDate();
+
+
+    this.runTime = Integer.valueOf(prop.getProperty("RUN_TIME"));
     LOOP = new AtomicLong(getTimestamp(this.startDate) / 1000);
     this.writeUrl =
-        "http://" + this.address + ":" + this.port + "/api/put/" + (this.sync ? "?sync&" : "?") //是否同步写入 Hbase
-            + "sync_timeout=" + this.SYNC_TIMEOUT_MS;   //PUT操作的超时时间限制
-
-//    this.writeUrl =
-//            "http://" + this.address + ":" + this.port + "/api/put/";
+            "http://" + this.address + ":" + this.port + "/api/put/" + (this.sync ? "?sync&" : "?") //是否同步写入 Hbase
+                    + "sync_timeout=" + this.SYNC_TIMEOUT_MS;   //PUT操作的超时时间限制
 
     System.out.println("RUN_TIME:" + this.runTime);
     System.out.println("TAG_NUMBER:" + this.tagNumber);
@@ -165,6 +197,7 @@ public class TSDBPerfTool {
     System.out.println("MAX_TRY:" + this.MAX_TRY);
     System.out.println("SYNC:" + this.sync);
     System.out.println("START_DATE:" + this.startDate);
+    System.out.println("END_DATE:" + this.endDate);
   }
 
   /**
@@ -205,7 +238,7 @@ public class TSDBPerfTool {
     }
 
     /**
-     * 模拟数据的消费者线程
+     * 模拟数据的生产者线程
      */
     private void startProducerThreads() {
       for (int i = 0; i < 4; ++i) {
@@ -259,6 +292,9 @@ public class TSDBPerfTool {
     }
   }
 
+  /**
+   * 模拟数据的消费者线程
+   */
   public void startConsumerThreads() {
     dataProducer.start();
     for (int i = 0; i < this.threads; ++i) {
@@ -302,7 +338,11 @@ public class TSDBPerfTool {
     }
   }
 
-
+  /**
+   * 获取当前时间戳
+   * @param dateStr 字符串格式日期
+   * @return
+   */
   public static long getTimestamp(String dateStr) {
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     Date date;
@@ -316,18 +356,46 @@ public class TSDBPerfTool {
     return System.currentTimeMillis();
   }
 
+  /**
+   * 获取结束日期
+   * @return
+   */
+  public String getEndDate() {
+    GregorianCalendar gc=new GregorianCalendar();
+    try {
+      SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+      String date = df.format(new Date());
+//      System.out.println("date:" + date);
+      gc.setTime( new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date));
+      //秒级相加
+      int runtime = 300;
+      gc.add(13, +runtime);
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(gc.getTime());
+  }
+
+  /**
+   * 开始测试
+   * @throws InterruptedException
+   */
   public void startTest() throws InterruptedException {
     startConsumerThreads();
     int printTime = 10 * 1000;
     long startTime = System.currentTimeMillis();
     while (System.currentTimeMillis() < (startTime + this.runTime * 1000)) {
       Thread.sleep(printTime);
+      //打印测试结果
       printResult(printTime);
     }
   }
 
+  /**
+   * 封装测试结果 供startTest()方法调用并打印
+   * @param printTime 打印时间 每隔 10s 在控制台打印一次
+   */
   private void printResult(int printTime) {
-    //
     Long nowSumTime = sumTime.get();
     Long nowSuccess = successCount.get();
     Long currSuccess = nowSuccess - lastSuccessCount.get();
@@ -339,7 +407,7 @@ public class TSDBPerfTool {
   }
 
   public static void main(String[] args) throws InterruptedException {
-    TSDBPerfTool tpt = new TSDBPerfTool();
+    TSDBPerfToolTest tpt = new TSDBPerfToolTest();
     tpt.initConf();
     tpt.startTest();
     System.exit(0);

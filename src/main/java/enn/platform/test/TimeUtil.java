@@ -1,4 +1,4 @@
-package enn.platform.opentsdbtest;
+package enn.platform.test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,7 +20,6 @@ public class TimeUtil {
         System.out.println("标准日期输出格式的数据类型：" + date.getClass());
         long timeStamp = System.currentTimeMillis();
         System.out.println("时间戳：" + timeStamp);
-
         Date date1 = df.parse(date);
         System.out.println("date1：" + date1);
         System.out.println("date1.getTime：" + date1.getTime());
